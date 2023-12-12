@@ -25,6 +25,7 @@ export default defineType({
       title: 'Excerpt',
       type: 'text',
       rows: 4,
+      validation: (Rule) => Rule.max(50).warning('Mahimal excerpt length is '),
     }),
     defineField({
       name: 'mainImage',
