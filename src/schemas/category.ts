@@ -5,8 +5,8 @@ const settings = {
 }
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
+  name: 'category',
+  title: 'Category',
   type: 'document',
   fields: [
     defineField({
@@ -23,35 +23,6 @@ export default defineType({
         source: 'title',
         maxLength: settings.maxSlugLength,
       },
-    }),
-    defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      rows: 4,
-      validation: (Rule) =>
-        Rule.max(settings.maxExcerptLength).warning(
-          `Maximal excerpt length is ${settings.maxExcerptLength}`,
-        ),
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-    }),
-    defineField({
-      name: 'postCategory',
-      title: 'Post Category',
-      type: 'reference',
-      to: [{ type: 'category' }],
     }),
   ],
   preview: {

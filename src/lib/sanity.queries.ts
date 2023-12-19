@@ -33,4 +33,14 @@ export interface Post {
   excerpt?: string
   mainImage?: ImageAsset
   body: PortableTextBlock[]
+  category?: Category
+  /* + category - reference, author */
+}
+
+export interface Category {
+  _type: 'post'
+  _id: string
+  _createdAt: string
+  title: string
+  slug: Slug
 }
