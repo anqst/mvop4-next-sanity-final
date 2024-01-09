@@ -9,7 +9,9 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
 }
 
-export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
+export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug]{
+  ..., postCategory->{...}, postAuthor->{...}
+}`
 
 export async function getPost(
   client: SanityClient,
@@ -33,8 +35,8 @@ export interface Post {
   excerpt?: string
   mainImage?: ImageAsset
   body: PortableTextBlock[]
-  category?: Category
-  /* + category - reference, author */
+  postCategory?: Category
+  postAuthor: Author
 }
 
 export interface Category {
@@ -42,5 +44,13 @@ export interface Category {
   _id: string
   _createdAt: string
   title: string
+  slug: Slug
+}
+
+export interface Author {
+  _type: 'post'
+  _id: string
+  _createdAt: string
+  name: string
   slug: Slug
 }

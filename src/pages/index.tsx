@@ -32,7 +32,7 @@ export default function IndexPage(
   const [posts] = useLiveQuery<Post[]>(props.posts, postsQuery)
   return (
     <Container>
-      <section>
+      <section className="flex flex-col justify-start items-center py-6 gap-6">
         {posts.length ? (
           posts.map((post) => <Card key={post._id} post={post} />)
         ) : (

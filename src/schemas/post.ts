@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+
 const settings = {
   maxSlugLength: 96,
   maxExcerptLength: 50,
@@ -52,6 +53,13 @@ export default defineType({
       title: 'Post Category',
       type: 'reference',
       to: [{ type: 'category' }],
+    }),
+    defineField({
+      name: 'postAuthor',
+      title: 'Post Author',
+      type: 'reference',
+      validation: (Rule) => Rule.required(),
+      to: [{ type: 'author' }],
     }),
   ],
   preview: {
