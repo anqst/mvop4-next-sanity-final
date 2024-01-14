@@ -11,7 +11,7 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug]{
   ..., postCategory->{...}, postAuthor->{...}
-}`
+}[0]`
 
 export async function getPost(
   client: SanityClient,

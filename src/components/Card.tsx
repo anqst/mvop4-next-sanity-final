@@ -6,7 +6,8 @@ import { formatDate } from '~/utils'
 import { getClient } from '~/lib/sanity.client'
 
 export default function Card({ post }: { post: Post }) {
-  console.log(post)
+  //
+  /* console.log(post) */
 
   return (
     <div className="flex flex-row justify-start items-center gap-6">
