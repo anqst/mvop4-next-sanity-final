@@ -48,7 +48,7 @@ export default function ProjectSlugRoute(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
   //
-  /* console.log(props) */
+  console.log(props)
 
   const [post] = useLiveQuery(props.post, postBySlugQuery, {
     slug: props.post.slug.current,
@@ -71,6 +71,11 @@ export default function ProjectSlugRoute(
         <div className="post__container">
           <h1 className="post__title">{post.title}</h1>
           <p className="post__excerpt">{post.excerpt}</p>
+          <p className="post__author">posted by: {post.postAuthor.name}</p>
+          <p className="post__category">
+            category:{' '}
+            {post.postCategory ? post.postCategory.title : 'not defined'}
+          </p>
           <p className="post__date">{formatDate(post._createdAt)}</p>
           <div className="post__content">
             <PortableText value={post.body} />

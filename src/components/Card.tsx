@@ -34,7 +34,7 @@ export default function Card({ post }: { post: Post }) {
         <p className="">{post.excerpt}</p>
         <p className="">{formatDate(post._createdAt)}</p>
         <div className="text-gray-500">
-          {post.postCategory ? <p>{}</p> : null}
+          {post.postCategory ? <p>{post.postCategory.title}</p> : null}
         </div>
       </div>
     </div>
