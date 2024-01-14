@@ -3,14 +3,20 @@ import type { ImageAsset, Slug } from '@sanity/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 
-export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
+export const postsQuery = groq`*[_type == "post" && defined(slug.current)]{
+  ...,
+  "postCategory": postCategory->{...},
+  "postAuthor": postAuthor->{...}
+} | order(_createdAt desc)`
 
 export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
 }
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug]{
-  ..., postCategory->{...}, postAuthor->{...}
+  ...,
+  "postCategory": postCategory->{...},
+  "postAuthor": postAuthor->{...}
 }[0]`
 
 export async function getPost(

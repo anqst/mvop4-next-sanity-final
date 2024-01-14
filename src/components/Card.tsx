@@ -6,8 +6,7 @@ import { formatDate } from '~/utils'
 import { getClient } from '~/lib/sanity.client'
 
 export default function Card({ post }: { post: Post }) {
-  //
-  /* console.log(post) */
+  console.log(post)
 
   return (
     <div className="flex flex-row justify-start items-center gap-6">
@@ -23,8 +22,8 @@ export default function Card({ post }: { post: Post }) {
         <div className="w-[500px] h-[300px] bg-black" />
       )}
       <div className="flex flex-col gap-6">
-        <div>
-          <p>posted by</p>
+        <div className="flex flex-row">
+          <p>posted by &nbsp;</p>
           <p className="font-bold">{post.postAuthor.name}</p>
         </div>
         <h3 className="text-3xl font-bold">
