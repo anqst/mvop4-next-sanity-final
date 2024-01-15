@@ -56,32 +56,44 @@ export default function ProjectSlugRoute(
 
   return (
     <Container>
-      <section className="post">
+      <div className="w-[90%] md:w-[80%] lg:w-[60%] m-auto py-12 flex flex-col gap-6">
         {post.mainImage ? (
-          <Image
-            className="post__cover"
-            src={urlForImage(post.mainImage).url()}
-            height={231}
-            width={367}
-            alt=""
-          />
-        ) : (
-          <div className="post__cover--none" />
-        )}
-        <div className="post__container">
-          <h1 className="post__title">{post.title}</h1>
-          <p className="post__excerpt">{post.excerpt}</p>
-          <p className="post__author">posted by: {post.postAuthor.name}</p>
-          <p className="post__category">
-            category:{' '}
-            {post.postCategory ? post.postCategory.title : 'not defined'}
-          </p>
-          <p className="post__date">{formatDate(post._createdAt)}</p>
-          <div className="post__content">
+          <div className="">
+            <Image
+              className="w-full"
+              src={urlForImage(post.mainImage).height(1000).url()}
+              height={0}
+              width={500}
+              alt=""
+            />
+          </div>
+        ) : null}
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <h1 className="text-left text-2xl font-bold">{post.title}</h1>
+            <p className="text-base italic overflow-hidden text-ellipsis line-clamp-3">
+              {post.excerpt}
+            </p>
+            <div className="text-base">
+              <span className="font-bold">{formatDate(post._createdAt)}</span>
+              <span>&nbsp; by &nbsp;</span>
+              <span className="text-base font-bold">
+                {post.postAuthor.name}
+              </span>
+            </div>
+            {post.postCategory ? (
+              <div className="flex flex-row">
+                <p className="p-2 rounded-xl bg-gray-500 text-white text-sm">
+                  {post.postCategory.title}
+                </p>
+              </div>
+            ) : null}
+          </div>
+          <div className="">
             <PortableText value={post.body} />
           </div>
         </div>
-      </section>
+      </div>
     </Container>
   )
 }

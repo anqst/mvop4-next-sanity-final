@@ -35,7 +35,10 @@ export default function Card({
           <div className="w-full h-[150px] bg-black" />
         )}
         <div className="flex flex-col gap-3 py-3 px-3 text-black pb-3">
-          <Link className="" href={`/post/${post.slug.current}`}>
+          <Link
+            className="text-black no-underline"
+            href={`/post/${post.slug.current}`}
+          >
             <p className="text-left text-2xl font-bold overflow-hidden text-ellipsis line-clamp-1">
               {post.title}
             </p>
