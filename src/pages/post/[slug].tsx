@@ -70,7 +70,9 @@ export default function ProjectSlugRoute(
         ) : null}
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
-            <h1 className="text-left text-2xl font-bold">{post.title}</h1>
+            <h1 className="text-left text-2xl md:text-3xl font-bold">
+              {post.title}
+            </h1>
             <p className="text-base italic overflow-hidden text-ellipsis line-clamp-3">
               {post.excerpt}
             </p>
