@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 const settings = {
-  maxSlugLength: 96,
+  maxSlugLength: 128,
 }
 
 export default defineType({

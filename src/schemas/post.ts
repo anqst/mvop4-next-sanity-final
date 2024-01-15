@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 const settings = {
-  maxSlugLength: 96,
-  maxExcerptLength: 50,
+  maxSlugLength: 128,
+  maxExcerptLength: 256,
 }
 
 export default defineType({
@@ -31,7 +31,7 @@ export default defineType({
       type: 'text',
       rows: 4,
       validation: (Rule) =>
-        Rule.max(settings.maxExcerptLength).warning(
+        Rule.max(settings.maxExcerptLength).error(
           `Maximal excerpt length is ${settings.maxExcerptLength}`,
         ),
     }),
