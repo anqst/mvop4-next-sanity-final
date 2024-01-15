@@ -38,17 +38,21 @@ export default function IndexPage(
     <Container>
       <section>
         {posts.length ? (
-          <div className="flex flex-col justify-start items-center py-6 gap-6 w-[80%] m-auto">
-            <p className="text-2xl border-b-2 border-b-gray-500 ">Hot Post</p>
-            <Card key={newestPost._id} post={newestPost} />
-            <p className="text-2xl border-b-2 border-b-gray-500 ">
+          <div className="flex flex-col justify-start items-center py-6 gap-6 lg:gap-8 w-[80%] lg:w-[60%] xl:w-[50%] m-auto">
+            <p className="text-2xl md:text-3xl border-b-2 border-b-gray-500 ">
+              Hot Post
+            </p>
+            <Card key={newestPost._id} post={newestPost} isFirst={true} />
+            <p className="text-2xl md:text-3xl border-b-2 border-b-gray-500 ">
               Other Posts
             </p>
-            {posts.map((post) =>
-              post._id !== newestPost._id ? (
-                <Card key={post._id} post={post} />
-              ) : null,
-            )}
+            <div className="w-full flex flex-col justify-start items-center gap-6 lg:gap-8 lg:grid grid-cols-2 lg:items-start">
+              {posts.map((post) =>
+                post._id !== newestPost._id ? (
+                  <Card key={post._id} post={post} />
+                ) : null,
+              )}
+            </div>
           </div>
         ) : (
           <Welcome />
