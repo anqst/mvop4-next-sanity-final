@@ -99,7 +99,7 @@ export default function ProjectSlugRoute(
               components={{
                 block: {
                   highlight: ({ children }) => (
-                    <div className="highlight" children={children}></div>
+                    <div className="highlight">{children}</div>
                   ),
                 },
               }}
