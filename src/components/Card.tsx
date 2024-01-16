@@ -20,7 +20,11 @@ export default function Card({
 
   return (
     <div className="flex flex-col justify-start items-center gap-6 w-full">
-      <div className="border-2 border-gray-500 flex flex-col w-full">
+      <div className="border-2 border-gray-500 relative flex flex-col w-full">
+        <Link
+          className="absolute w-full h-full"
+          href={`/post/${post.slug.current}`}
+        ></Link>
         {post.mainImage ? (
           <div className="">
             <Image
@@ -35,14 +39,9 @@ export default function Card({
           <div className="w-full h-[150px] bg-black" />
         )}
         <div className="flex flex-col gap-3 py-3 px-3 text-black pb-3">
-          <Link
-            className="text-black no-underline"
-            href={`/post/${post.slug.current}`}
-          >
-            <p className="text-left text-2xl font-bold overflow-hidden text-ellipsis line-clamp-1">
-              {post.title}
-            </p>
-          </Link>
+          <p className="text-black no-underline text-left text-2xl font-bold overflow-hidden text-ellipsis line-clamp-1">
+            {post.title}
+          </p>
           {isFirst === true ? (
             <p className="text-base overflow-hidden text-ellipsis line-clamp-3">
               {post.excerpt}
