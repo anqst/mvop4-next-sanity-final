@@ -36,3 +36,8 @@ code {
   background-color: #52bad4;
   color: white;
 }
+.highlight {
+  @apply bg-green-300;
+  @apply text-white;
+  @apply py-1 pl-6;
+}
