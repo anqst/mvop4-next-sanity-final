@@ -15,6 +15,9 @@ import {
 } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
+import Highlight from '~/components/Highlight'
+import { ReactElement, JSXElementConstructor } from 'react'
+import { BlockStyleProps } from 'sanity'
 
 interface Query {
   [key: string]: string
@@ -92,7 +95,16 @@ export default function ProjectSlugRoute(
             ) : null}
           </div>
           <div className="">
-            <PortableText value={post.body} />
+            <PortableText
+              components={{
+                block: {
+                  highlight: ({ children }) => (
+                    <Highlight>{children}</Highlight>
+                  ),
+                },
+              }}
+              value={post.body}
+            />
           </div>
         </div>
       </div>

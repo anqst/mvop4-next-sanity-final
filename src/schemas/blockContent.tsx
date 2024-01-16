@@ -1,4 +1,6 @@
-import { defineArrayMember, defineType } from 'sanity'
+import { ReactElement, JSXElementConstructor } from 'react'
+import { BlockStyleProps, defineArrayMember, defineType } from 'sanity'
+import Highlight from '~/components/Highlight'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -29,6 +31,27 @@ export default defineType({
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
         { title: 'Quote', value: 'blockquote' },
+        {
+          title: 'Highlight',
+          value: 'highlight',
+          component: (props) => (
+            <Highlight
+              block={undefined}
+              focused={false}
+              renderDefault={function (
+                props: BlockStyleProps,
+              ): ReactElement<any, string | JSXElementConstructor<any>> {
+                throw new Error('Function not implemented.')
+              }}
+              schemaType={undefined}
+              selected={false}
+              title={''}
+              value={''}
+            >
+              {props.children}
+            </Highlight>
+          ),
+        },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
       // Marks let you mark up inline text in the block editor.
@@ -38,7 +61,20 @@ export default defineType({
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
-          { title: 'Code', value: 'code' },
+          {
+            title: 'Code',
+            value: 'code',
+            component: (props) => (
+              <span
+                style={{
+                  backgroundColor: '#52bad4',
+                  color: 'white',
+                }}
+              >
+                {props.children}
+              </span>
+            ),
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
