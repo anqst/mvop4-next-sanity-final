@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import { BlockStyleProps } from 'sanity'
 
 export default function Highlight(props: BlockStyleProps) {
